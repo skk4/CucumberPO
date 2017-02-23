@@ -8,6 +8,8 @@ import cucumber.api.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -24,6 +26,8 @@ public class SharedDriver extends EventFiringWebDriver {
             REAL_DRIVER.close();
         }
     };
+    
+    /*
 
     static {
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
@@ -44,6 +48,24 @@ public class SharedDriver extends EventFiringWebDriver {
         } catch (MalformedURLException exceptions) {
 
         }
+    }
+    
+    */
+    
+    static {
+        Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
+        ConfigManager config = new ConfigManager();
+
+        DesiredCapabilities browser = null;
+
+        if ("firefox".equalsIgnoreCase(config.get("browser"))) {
+        	REAL_DRIVER = new FirefoxDriver();
+        	//browser = DesiredCapabilities.firefox();
+        } else {
+        	REAL_DRIVER = new ChromeDriver();
+        	//browser = DesiredCapabilities.chrome();
+        }
+        //browser.setJavascriptEnabled(true);
     }
 
     public SharedDriver () {
