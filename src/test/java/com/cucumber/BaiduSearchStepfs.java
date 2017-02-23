@@ -85,12 +85,12 @@ public class BaiduSearchStepfs {
 	    //throw new PendingException();
 		/*
 		Thread.sleep(10000);  
-        Assert.assertEquals("selenium_百度搜索", driver.getTitle());  
+        Assert.assertEquals("selenium_鐧惧害鎼滅储", driver.getTitle());  
         driver.close();  
         driver.quit();  
         */
-        Thread.sleep(10000);    //后面可以用显示等待或者隐示等待来优化代码  
-        Assert.assertEquals("selenium_百度搜索", this.baiduHome_page.getPageTitle());
+        Thread.sleep(10000);    //绛夊緟鏃堕棿selenium_鐧惧害鎼滅储 
+        Assert.assertEquals("selenium_鐧惧害鎼滅储", this.baiduHome_page.getPageTitle());
 	}
 
 }
